@@ -1,5 +1,11 @@
 public class MyArrays {
-  public static int[] returnCopy(int[] )
+  public static int[] returnCopy(int[] ary) {
+    int[] aryCopy = new int[ary.length];
+    for (int i = 0; i < ary.length; i++) {
+      aryCopy[i] = ary[i];
+    }
+    return aryCopy;
+  }
 
   public static String aryToString(int[] nums) {
     String ans = "[";
@@ -14,10 +20,27 @@ public class MyArrays {
   }
   public static void main(String[] args) {
     // aryToString test
-    System.out.println(aryToString(new int[] {1, 2, 3, 5, 6}));
+    int[] ary = {1, 2, 3, 5, 6};
+    System.out.println(aryToString(ary));
     // returnCopy test cases
-    int[] ary1 = {1, 2, 3, 6, 8, 3, 4};
-    System.out.println(aryToString(returnCopy(new int[] {1, 2, 3, 6, 8, 3, 4})).equals(aryToString(ary1)));
+    ary = new int[10];
+    String original = aryToString(ary);
+    String copy = aryToString(returnCopy(ary));
+    System.out.println("Original: " + original + "\nCopy: " + copy);
+    System.out.println(copy.equals(original));
+
+    ary = new int[] {};
+    original = aryToString(ary);
+    copy = aryToString(returnCopy(ary));
+    System.out.println("Original: " + original + "\nCopy: " + copy);
+    System.out.println(copy.equals(original));
+
+    ary = new int[] {5, 2, 0, 10, 33, 56};
+    original = aryToString(ary);
+    copy = aryToString(returnCopy(ary));
+    System.out.println("Original: " + original + "\nCopy: " + copy);
+    System.out.println(copy.equals(original));
+
 
 
   }
