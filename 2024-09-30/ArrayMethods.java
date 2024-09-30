@@ -35,7 +35,7 @@ public class ArrayMethods {
     return arrayConvert;
   }
 
-  public static int ary2DSum(int[][] nums) {
+  public static int arr2DSum(int[][] nums) {
     int sum = 0;
     for (int i = 0; i < nums.length; i++) {
       for (int j = 0; j < nums[i].length; j++) {
@@ -47,10 +47,12 @@ public class ArrayMethods {
 
   public static void main(String[] args) {
     // array 2D sum test cases
-    // System.out.println(arr2DSum(new int[][] {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}) == 45);
-    // System.out.println(arr2DSum(new int[][] {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}) == 45);
+    System.out.println(arr2DSum(new int[][] {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}) == 45);
+    System.out.println(arr2DSum(new int[10][10]) == 0);
+    System.out.println(arr2DSum(new int[][] {{2354, 125}, {24, 2452, 8942, 2542}, {7}, {24524, 1341, 21}}) == 42332);
 
     // aryToString for 2d tests
     System.out.println(aryToString(new int[][] {{1, 2}, {4, 5}, {6, 7}}));
+    System.out.println(aryToString(new int[][] {{2354, 125}, {24, 2452, 8942, 2542}, {7}, {24524, 1341, 21}}));
   }
 }
