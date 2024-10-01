@@ -58,6 +58,21 @@ public class ArrayMethods {
     return swapped;
   }
 
+  public static void replaceNegative(int [][] vals) {
+    for (int i = 0; i < vals.length; i++) {
+      for (int j = 0; j < vals[i].length; j++) {
+        if (vals[i][j] < 0) {
+          if (i == j) {
+            vals[i][j] = 1;
+          }
+          else {
+            vals[i][j] = 0;
+          }
+        }
+      }
+    }
+  }
+
   public static void main(String[] args) {
     // aryToString for 2d tests
     System.out.println(aryToString(new int[][] {{1, 2}, {4, 5}, {6, 7}}));
@@ -73,5 +88,17 @@ public class ArrayMethods {
     System.out.println(aryToString(swapRC(new int[][] {{1,2,3},{4,5,6}})).equals(aryToString(new int[][] {{1,4},{2,5},{3,6}})));
     System.out.println(aryToString(swapRC(new int[][] {{1,2,3},{4,5,6},{7,8,9},{10,11,12}})).equals(aryToString(new int[][] {{1,4,7,10},{2,5,8,11},{3,6,9,12}})));
     System.out.println(aryToString(swapRC(new int[][] {{0,0},{0,0},{0,0}})).equals(aryToString(new int[][] {{0,0,0},{0,0,0}})));
+
+    // replaceNegative tests
+    int[][] test1 = new int[][] {{9, -2, -65},
+                                 {-9, -6, 92}};
+    replaceNegative(test1);
+    System.out.println(aryToString(test1));
+
+    test1 = new int[][] {{-9, -2, -65},
+                                 {-9, -6, 92},
+                                 {-8, 732, -6}};
+    replaceNegative(test1);
+    System.out.println(aryToString(test1));
   }
 }
