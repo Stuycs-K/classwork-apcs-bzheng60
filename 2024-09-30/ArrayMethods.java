@@ -72,6 +72,21 @@ public class ArrayMethods {
       }
     }
   }
+  public static int[] copySubarray (int[][] nums, int index) {
+    int[] copySubarray = new int[nums[index].length];
+    for (int i = 0;  i < nums[index].length; i++) {
+      copySubarray[i] = nums[index][i];
+    }
+    return copySubarray;
+  }
+
+  public static int[][] copy(int[][] nums) {
+    int[][] copy = new int[nums.length][];
+    for (int i = 0; i < copy.length; i++) {
+      copy[i] = copySubarray(nums, i);
+    }
+    return copy;
+  }
 
   public static void main(String[] args) {
     // aryToString for 2d tests
@@ -89,16 +104,44 @@ public class ArrayMethods {
     System.out.println(aryToString(swapRC(new int[][] {{1,2,3},{4,5,6},{7,8,9},{10,11,12}})).equals(aryToString(new int[][] {{1,4,7,10},{2,5,8,11},{3,6,9,12}})));
     System.out.println(aryToString(swapRC(new int[][] {{0,0},{0,0},{0,0}})).equals(aryToString(new int[][] {{0,0,0},{0,0,0}})));
 
-    // replaceNegative tests
-    int[][] test1 = new int[][] {{9, -2, -65},
-                                 {-9, -6, 92}};
-    replaceNegative(test1);
-    System.out.println(aryToString(test1));
+    // replace Negative tests
+    System.out.println("Replace Negative: \n");
+    int[][] test = new int[][] {{9, -2, -65},
+                                {-9, -6, 92}};
+    replaceNegative(test);
+    System.out.println(aryToString(test));
 
-    test1 = new int[][] {{-9, -2, -65},
-                                 {-9, -6, 92},
-                                 {-8, 732, -6}};
-    replaceNegative(test1);
-    System.out.println(aryToString(test1));
+    test = new int[][] {{-9, -2, -65},
+                        {-9, -6, 92},
+                        {-8, 732, -6}};
+    replaceNegative(test);
+    System.out.println(aryToString(test));
+
+    // copy 2d array Tests
+    System.out.println("\nCopy 2d: \n");
+    int[][] copyTest = copy(test);
+    System.out.println(aryToString(copyTest));
+
+    replaceNegative(test);
+    // testing if changing the original changes the copy
+    System.out.println(aryToString(copyTest));
+
+
+    test = new int[][] {{1, 2, 3}, {4, 5}, {6, 7, 8, 9}, {10, 11, 12, 13, 14}};
+    copyTest = copy(test);
+    System.out.println(aryToString(copyTest));
+
+    replaceNegative(test);
+    // testing if changing the original changes the copy
+    System.out.println(aryToString(copyTest));
+
+
+    test = new int[3][5];
+    copyTest = copy(test);
+    System.out.println(aryToString(copyTest));
+
+    replaceNegative(test);
+    // testing if changing the original changes the copy
+    System.out.println(aryToString(copyTest));
   }
 }
