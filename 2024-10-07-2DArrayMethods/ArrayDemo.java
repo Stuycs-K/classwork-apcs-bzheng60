@@ -13,6 +13,8 @@ public class ArrayDemo{
     System.out.println(countZeros2D(new int[5][5]));
     System.out.println(countZeros2D(new int[][] {{1, 2, 3}, {1, 2, 5, 3}, {1, 2}, {6}}));
 
+    System.out.println(arrToString(new int[][] {{1, 2, 3}, {1, 2, 5, 3}, {1, 2}, {6}}));
+
   }
 
   //0. Include your prior methods to help you print a 1D/2D array of ints.
@@ -34,18 +36,7 @@ public class ArrayDemo{
   public static String arrToString(int[][]ary){
     String arrayConvert= "[";
     for (int i = 0; i< ary.length; i++){
-      for(int j = 0; j<ary[i].length;j++){
-        if (j==0){
-          arrayConvert+="[";
-        }
-        arrayConvert+=ary[i][j];
-        if (j==ary[i].length-1){
-          arrayConvert+="]";
-        }
-        if(j<ary[i].length-1){
-          arrayConvert+=", ";
-        }
-      }
+      arrayConvert += arrToString(ary[i]);
       if(i<ary.length-1){
         arrayConvert+=", ";
       }
