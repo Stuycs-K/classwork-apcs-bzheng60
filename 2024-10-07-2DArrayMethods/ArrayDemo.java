@@ -5,15 +5,21 @@ public class ArrayDemo{
     //You can now use Arrays.toString(yourArray) instead of writing arrayToString again.
     //Compare Arrays.toString(yourArray) to YOUR arrayToString() method to make sure yours is correct
     //do not use any other Arrays.method()
+
+    // Comparison of arrToString with built-in method
     String s = Arrays.toString(new int[] {1, 2, 3, 4, 5, 6});
     System.out.println(s);
     System.out.println(arrToString(new int[] {1, 2, 3, 4, 5, 6}));
 
+    // Test cases for countZeros2D
     System.out.println(countZeros2D(new int[][] {{0, 0, 0}, {1, 2, 5, 3}, {1, 2}, {0}}));
     System.out.println(countZeros2D(new int[5][5]));
     System.out.println(countZeros2D(new int[][] {{1, 2, 3}, {1, 2, 5, 3}, {1, 2}, {6}}));
 
-    System.out.println(arrToString(new int[][] {{1, 2, 3}, {1, 2, 5, 3}, {1, 2}, {6}}));
+    // Test cases for htmlTable
+    System.out.println(htmlTable(new int[][] {{1, 2, 3}, {4}, {5, 6, 7, 8}, {9, 10}}));
+
+
 
   }
 
@@ -129,6 +135,17 @@ public class ArrayDemo{
   //   e.g. htmlTable(new int[][]{{1,2},{3}})  returns:
   // "<table><tr><td>1</td><td>2</td></tr><tr><td>3</td></tr></table>"
   public static String htmlTable(int[][]nums){
-    return "";
+    String result = "<table>";
+    for (int i = 0; i < nums.length; i++) {
+      result += "<tr>";
+      for (int j = 0; j < nums[i].length; j++) {
+        result += "<td>";
+        result += nums[i][j];
+        result += "</td>";
+      }
+      result += "</tr>";
+    }
+    result += "</table>";
+    return result;
   }
 }
