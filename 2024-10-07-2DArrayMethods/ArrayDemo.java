@@ -7,9 +7,15 @@ public class ArrayDemo{
     //do not use any other Arrays.method()
 
     // Comparison of arrToString with built-in method
-    String s = Arrays.toString(new int[] {1, 2, 3, 4, 5, 6});
-    System.out.println(s);
-    System.out.println(arrToString(new int[] {1, 2, 3, 4, 5, 6}));
+    int[] arr = new int[] {1, 2, 3, 4, 5, 6};
+    System.out.println(Arrays.toString(arr));
+    System.out.println(arrToString(arr));
+
+    //  Comparison of arrToString for 2D with built-in method
+    // Test cases for countZeros2D
+    int[][] arr2D = new int[][] {{1, 2, 3}, {4, 5}, {6, 7, 8}};
+    System.out.println(arrToString(arr2D));
+    System.out.println(Arrays.deepToString(arr2D));
 
     // Test cases for countZeros2D
     System.out.println(countZeros2D(new int[][] {{0, 0, 0}, {1, 2, 5, 3}, {1, 2}, {0}}));
@@ -17,7 +23,7 @@ public class ArrayDemo{
     System.out.println(countZeros2D(new int[][] {{1, 2, 3}, {1, 2, 5, 3}, {1, 2}, {6}}));
 
     // Test cases for htmlTable
-    System.out.println(htmlTable(new int[][] {{1, 2, 3}, {4}, {5, 6, 7, 8}, {9, 10}}) + "\n");
+    System.out.println(htmlTable(new int[][] {{1, 2, 3}, {4}, {5, 6, 7, 8}, {9, 10}}));
     System.out.println("\n" + htmlTable(new int[3][3]));
 
 
