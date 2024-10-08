@@ -17,7 +17,8 @@ public class ArrayDemo{
     System.out.println(countZeros2D(new int[][] {{1, 2, 3}, {1, 2, 5, 3}, {1, 2}, {6}}));
 
     // Test cases for htmlTable
-    System.out.println(htmlTable(new int[][] {{1, 2, 3}, {4}, {5, 6, 7, 8}, {9, 10}}));
+    System.out.println(htmlTable(new int[][] {{1, 2, 3}, {4}, {5, 6, 7, 8}, {9, 10}}) + "\n");
+    System.out.println("\n" + htmlTable(new int[3][3]));
 
 
 
