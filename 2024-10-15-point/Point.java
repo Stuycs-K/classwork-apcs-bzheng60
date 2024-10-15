@@ -30,7 +30,7 @@ public class Point{
   Write this method FOURTH, go to the main and do that one first.
   */
   public double distanceTo(Point other){
-    return Math.sqrt(Math.pow((other.getX() - x), 2) + Math.pow((other.getY() - y), 2));
+    return Math.sqrt(Math.pow((other.x - x), 2) + Math.pow((other.y - y), 2));
   }
 
   /*
@@ -38,7 +38,7 @@ public class Point{
   do not write redundant code.
   */
   public static double distance(Point a, Point b){
-    return Math.sqrt(Math.pow((b.getX() - a.getX()), 2) + Math.pow((b.getY() - a.getY()), 2));
+    return Math.sqrt(Math.pow((b.x - a.x), 2) + Math.pow((b.y - a.y), 2));
   }
 
 
