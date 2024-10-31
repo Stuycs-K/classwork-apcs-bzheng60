@@ -10,14 +10,21 @@ public class ReadFile {
           Scanner input = new Scanner(file);
           //CODE THAT SCANS THE FILE.
           int count = 0;
-          while(input.hasNextLine()) {
-            if (count % 2 == 0) {
-                System.out.println(input.nextLine());
+        //   while(input.hasNextLine()) {
+        //     if (count % 2 == 0) {
+        //         System.out.println(input.nextLine());
+        //     }
+        //     else {
+        //         input.nextLine();
+        //     }
+        //     count++;
+        //   }
+
+        while(input.hasNextLine()) {
+            String currentLine = input.nextLine();
+            if (currentLine.contains("{")) {
+                System.out.println(currentLine);
             }
-            else {
-                input.nextLine();
-            }
-            count++;
           }
           input.close();//releases the file from your program
     
