@@ -22,15 +22,24 @@ public class ArrayListPractice {
     }
   }
 
+  public static ArrayList<String> makeReverseList(ArrayList<String> original){
+    ArrayList<String> reverse = new ArrayList<String>(original.size());
+    for (int i = original.size()-1; i >= 0; i--){
+      reverse.add(original.get(i));
+    }
+    return reverse;
+  }
+
   public static void main(String[] args) {
     ArrayList<String> randoms = createRandomArray(10);
-    for (int i = 0; i < 10; i++) {
-      System.out.println(randoms.get(i));
-    }
+    System.out.println(randoms);
+
     replaceEmpty(randoms);
-    for (int i = 0; i < randoms.size(); i++) {
-      System.out.println(randoms.get(i));
-    }
+    System.out.println(randoms);
+    
+    ArrayList<String> reversed = makeReverseList(randoms);
+    System.out.println(reversed);
+
   }
 
 
