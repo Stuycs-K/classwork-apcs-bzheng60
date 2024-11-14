@@ -14,10 +14,10 @@ public class ArrayListPractice {
     return randomStrings;
   }
 
-  public static void replaceEmpty(AraryList<String> original) {
-    index = original.indexOf("");
+  public static void replaceEmpty(ArrayList<String> original) {
+    int index = original.indexOf("");
     while (index != -1) {
-      original.set
+      original.set(index, "Empty");
       index = original.indexOf("");
     }
   }
@@ -25,6 +25,10 @@ public class ArrayListPractice {
   public static void main(String[] args) {
     ArrayList<String> randoms = createRandomArray(10);
     for (int i = 0; i < 10; i++) {
+      System.out.println(randoms.get(i));
+    }
+    replaceEmpty(randoms);
+    for (int i = 0; i < randoms.size(); i++) {
       System.out.println(randoms.get(i));
     }
   }
