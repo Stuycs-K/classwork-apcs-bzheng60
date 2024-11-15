@@ -15,10 +15,10 @@ public class ArrayListPractice {
   }
 
   public static void replaceEmpty(ArrayList<String> original) {
-    int index = original.indexOf("");
-    while (index != -1) {
-      original.set(index, "Empty");
-      index = original.indexOf("");
+    for (int i = 0; i < original.size(); i++) {
+      if (original.get(i) == "") {
+        original.set(i, "Empty");
+      }
     }
   }
 
@@ -79,6 +79,20 @@ public class ArrayListPractice {
     System.out.println(a);
     System.out.println(b);
     System.out.println(mixed);
+
+    ArrayList<String> many = createRandomArray(200000);
+    replaceEmpty(many);
+    System.out.println("done");
+
+    reversed = makeReverseList(many);
+    System.out.println("done");
+
+    ArrayList<String> many2 = createRandomArray(200000);
+    mixed = mixLists(many, many2);
+    System.out.println("done");
+
+    
+  
 
   }
 
