@@ -37,22 +37,22 @@ public class ArrayListPractice {
     ArrayList<String> largerAL;
 
     if (aSize < bSize) {
-      smaller = aSize;
+      smallerSize = aSize;
       largerAL = b;
     }
     else {
-      smaller = bSize;
+      smallerSize = bSize;
       largerAL = a;
     }
 
     ArrayList<String> mixed = new ArrayList<String> (aSize+bSize);
 
-    for (int i = 0; i < smaller; i++) {
+    for (int i = 0; i < smallerSize; i++) {
       mixed.add(a.get(i));
       mixed.add(b.get(i));
     }
 
-    for (int i = smaller; i < bSize; i++) {
+    for (int i = smallerSize; i < largerAL.size(); i++) {
       mixed.add(largerAL.get(i));
     }
 
@@ -69,6 +69,16 @@ public class ArrayListPractice {
 
     ArrayList<String> reversed = makeReverseList(randoms);
     System.out.println(reversed);
+
+    ArrayList<String> a = createRandomArray(5);
+    ArrayList<String> b = createRandomArray(10);
+    replaceEmpty(a);
+    replaceEmpty(b);
+
+    ArrayList<String> mixed = mixLists(a, b);
+    System.out.println(a);
+    System.out.println(b);
+    System.out.println(mixed);
 
   }
 
