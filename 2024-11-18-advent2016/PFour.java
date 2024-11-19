@@ -49,6 +49,33 @@ public class PFour {
                 if (maxChars.equals(checkSum)){
                     idSum += ID;
                 }
+
+                // part two
+                String decrypted = "";
+                for (int i = 0; i < parts.length - 1; i++) {
+                    String item = parts[i];
+                    for (int j = 0; j < item.length(); j++) {
+                        int ascii = item.charAt(j);
+
+                        ascii += (ID % 26);
+
+                        if (ascii > 122) {
+                            ascii %= 122;
+                            ascii += 96;
+                        }
+
+                        
+                        char decryptChar = Character.toString(ascii).charAt(0);
+                        decrypted += decryptChar;
+                    }
+                    decrypted += " ";
+                }
+                if (decrypted.equals("northpole object storage ")) {
+                    System.out.println(ID);
+                }
+                // System.out.println(decrypted);
+
+
             }
             System.out.println(idSum);
                // array of count a, b, c, d, e, ....
