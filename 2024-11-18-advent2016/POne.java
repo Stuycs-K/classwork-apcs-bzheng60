@@ -1,60 +1,71 @@
-import java.io.
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class POne {
-  public static shortest(String input) {
+  public static int shortest(String input) {
     int x = 0;
     int y = 0;
 
-    File file = new File(input);
-    Scanner sc = new Scanner(file)
-    String line = sc.nextLine();
+    try {
+      File file = new File(input);
+      Scanner sc = new Scanner(file);
+      String line = sc.nextLine();
 
-    String[] contents = line.split(", ");
+      String[] contents = line.split(", ");
 
-    String[] directions = new String[] {"North", "East", "South", "West"};
-    String facing = "North";
+      String[] directions = new String[] {"North", "East", "South", "West"};
+      String facing = "North";
+      int index = 0;
 
-
-    String instruction = sc.next();
-    String direction = instruction.charAt(0);
-    int distance = Integer.parseInt(instrution.charAt(1));
-
-    if (direction == 'L') {
-      if (facing.equals("North")) {
-        x -= distance;
-      }
-      if (facing.equals("East")) {
-        y += distance;
-      }
-      if (facing.equals("South")) {
-        x += distance;
+      for (int i = 0; i < contents.length; i++) {
+        String instruction = contents[i];
+        char direction = instruction.charAt(0);
+        int distance = Integer.parseInt(instruction.substring(1));
+        
+        if (direction == 'L') {
+          if (facing.equals("North")) {
+            x -= distance;
+          }
+          else if (facing.equals("East")) {
+            y += distance;
+          }
+          else if (facing.equals("South")) {
+            x += distance;
+          }
+          else {
+            y -= distance;
+          }
+          index = (index + 3) % 4;
       }
       else {
-        y -= distance;
+        if (facing.equals("North")) {
+          x += distance;
+        }
+        else if (facing.equals("East")) {
+          y -= distance;
+        }
+        else if (facing.equals("South")) {
+          x -= distance;
+        }
+        else {
+          y += distance;
+        }
+        index = (index + 1) % 4;
       }
-      int index = (directions.indexOf(facing) + 3) % 4);
+      facing = directions[index];
+      sc.close();
+      }
+      return Math.abs(x)+Math.abs(y);
     }
-    else {
-      if (facing.equals("North")) {
-        x += distance;
-      }
-      if (facing.equals("East")) {
-        y -= distance;
-      }
-      if (facing.equals("South")) {
-        x -= distance;
-      }
-      else {
-        y += distance;
-      }
-      int index = (directions.indexOf(facing) + 1) % 4);
+    
+    catch (FileNotFoundException ex) {
+      System.out.println("File not found");
+      return -1;
     }
-    facing = directions[index];
-    sc.close();
-    return x+y;
+    
   }
   public static void main(String[] args) {
-    System.out.println(shortest("R2, R2, R2"));
+    System.out.println(shortest("input.txt"));
   }
 }
