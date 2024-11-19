@@ -3,19 +3,9 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class PFour {
-    public static char returnMax(int[] count) {
-        int maxCount = -1;
-        char maxChar = ' ';
-        for(int i = 0; i < count.length; i++) {
-            if (count[i] > maxCount) {
-                maxCount = count[i];
-                String temp = Character.toString(i + 97);
-                maxChar = temp.charAt(0);
-            }
-        }
-        return maxChar;
-    }
+ 
     public static void main(String[] args) {
+        int idSum = 0;
     
         try {
             File file = new File("PFour.txt");
@@ -38,12 +28,30 @@ public class PFour {
                         count[index]++;
                     }
                 }
-                
-                System.out.println(returnMax(count));
 
+                String maxChars = "";
+                for (int i = 0; i < checkSum.length(); i++) {
+                    int maxCount = -1;
+                    char maxChar = ' ';
+                    int maxIndex = 0;
 
-
-            }   // array of count a, b, c, d, e, ....
+                    for(int j = 0; j < count.length; j++) {
+                        if (count[j] > maxCount) {
+                            maxCount = count[j];
+                            String temp = Character.toString(j + 97);
+                            maxChar = temp.charAt(0);
+                            maxIndex = j;
+                        }
+                    }
+                    count[maxIndex] = -1;
+                    maxChars += maxChar;
+                }
+                if (maxChars.equals(checkSum)){
+                    idSum += ID;
+                }
+            }
+            System.out.println(idSum);
+               // array of count a, b, c, d, e, ....
             // left to right, remove max each loop (checkSum.length() loops)
             sc.close();
         }
