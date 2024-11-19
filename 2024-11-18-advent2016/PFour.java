@@ -3,7 +3,18 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class PFour {
-    public static char 
+    public static char returnMax(int[] count) {
+        int maxCount = -1;
+        char maxChar = ' ';
+        for(int i = 0; i < count.length; i++) {
+            if (count[i] > maxCount) {
+                maxCount = count[i];
+                String temp = Character.toString(i + 97);
+                maxChar = temp.charAt(0);
+            }
+        }
+        return maxChar;
+    }
     public static void main(String[] args) {
     
         try {
@@ -27,6 +38,8 @@ public class PFour {
                         count[index]++;
                     }
                 }
+                
+                System.out.println(returnMax(count));
 
 
 
