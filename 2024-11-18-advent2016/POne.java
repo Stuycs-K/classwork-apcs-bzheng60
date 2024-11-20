@@ -3,7 +3,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class POne {
-  public static int shortest(String input) {
+  public static int solve(String input) {
     int x = 0;
     int y = 0;
 
@@ -18,6 +18,8 @@ public class POne {
       String facing = "North";
       int index = 0;
 
+      int[][] visited = new int[10000][10000]; // part 2
+
       for (int i = 0; i < contents.length; i++) {
         String instruction = contents[i];
         char direction = instruction.charAt(0);
@@ -25,36 +27,84 @@ public class POne {
         
         if (direction == 'L') {
           if (facing.equals("North")) {
-            x -= distance;
+            for (int j = 0; j < distance; j++) {
+              x--;
+              visited[x+1000][y+1000]++;
+              if (visited[x+1000][y+1000] == 2) {
+                return Math.abs(x)+Math.abs(y);
+              }
+            }  
           }
           else if (facing.equals("East")) {
-            y += distance;
+            for (int j = 0; j < distance; j++) {
+              y++;
+              visited[x+1000][y+1000]++;
+              if (visited[x+1000][y+1000] == 2) {
+                return Math.abs(x)+Math.abs(y);
+              }
+            }
           }
           else if (facing.equals("South")) {
-            x += distance;
+            for (int j = 0; j < distance; j++) {
+              x++;
+              visited[x+1000][y+1000]++;
+              if (visited[x+1000][y+1000] == 2) {
+                return Math.abs(x)+Math.abs(y);
+              }
+            }
           }
           else {
-            y -= distance;
+            for (int j = 0; j < distance; j++) {
+              y--;
+              visited[x+1000][y+1000]++;
+              if (visited[x+1000][y+1000] == 2) {
+                return Math.abs(x)+Math.abs(y);
+              }
+            }
           }
           index = (index + 3) % 4;
-      }
-      else {
-        if (facing.equals("North")) {
-          x += distance;
-        }
-        else if (facing.equals("East")) {
-          y -= distance;
-        }
-        else if (facing.equals("South")) {
-          x -= distance;
         }
         else {
-          y += distance;
+          if (facing.equals("North")) {
+            for (int j = 0; j < distance; j++) {
+              x++;
+              visited[x+1000][y+1000]++;
+              if (visited[x+1000][y+1000] == 2) {
+                return Math.abs(x)+Math.abs(y);
+              }
+            }
+          }
+          else if (facing.equals("East")) {
+            for (int j = 0; j < distance; j++) {
+              y--;
+              visited[x+1000][y+1000]++;
+              if (visited[x+1000][y+1000] == 2) {
+                return Math.abs(x)+Math.abs(y);
+              }
+            }
+          }
+          else if (facing.equals("South")) {
+            for (int j = 0; j < distance; j++) {
+              x--;
+              visited[x+1000][y+1000]++;
+              if (visited[x+1000][y+1000] == 2) {
+                return Math.abs(x)+Math.abs(y);
+              }
+            }  
+          }
+          else {
+            for (int j = 0; j < distance; j++) {
+              y++;
+              visited[x+1000][y+1000]++;
+              if (visited[x+1000][y+1000] == 2) {
+                return Math.abs(x)+Math.abs(y);
+              }
+            }
+          }
+          index = (index + 1) % 4;
         }
-        index = (index + 1) % 4;
-      }
-      facing = directions[index];
-      sc.close();
+        facing = directions[index];
+        sc.close();
       }
       return Math.abs(x)+Math.abs(y);
     }
@@ -66,6 +116,6 @@ public class POne {
     
   }
   public static void main(String[] args) {
-    System.out.println(shortest("input.txt"));
+    System.out.println(solve("input.txt"));
   }
 }
