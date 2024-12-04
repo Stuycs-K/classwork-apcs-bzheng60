@@ -1,6 +1,10 @@
 public class ColorDemo {
   public static final String RESET = "\u001b[0m";
+  
+  public static final String RESET_CURSOR = "\u001b[H";
   public static final String HIDE_CURSOR = "\u001b[?25l";
+  public static final String SHOW_CURSOR =  "\u001b[?25h";
+
   public static final String CLEAR_SCREEN =  "\u001b[2J";
   
   public static final String RED = "\u001b[31m";
@@ -12,17 +16,38 @@ public class ColorDemo {
 
   public static final String[] colors = new String[] {RED, ORANGE, YELLOW, GREEN, BLUE, MAGENTA};
 
-  public static void main(String[] args) {
-    System.out.print(CLEAR_SCREEN);
+  public static void sleep(int milli){
+    try{
+      Thread.sleep(milli);
+    }
+    catch(Exception e) {
+    }
+  }
 
-    for (int lines = 0; lines < 100; lines++) {
-      for (int i = 0; i < 30; i++) {
-        int colorIndex = (lines+i) % colors.length;
+  public static void drawBlock(int shift) {
+    for (int length = 0; length < 10; length++) {
+      for (int width = 0; width < 30; width++) {
+        int colorIndex = (length+width + shift) % colors.length;
         System.out.print(colors[colorIndex]);
-        System.out.print("a");
+        System.out.print("[0]");
       }
       System.out.println();
     }
-    
   }
+
+  public static void main(String[] args) {
+    System.out.print(HIDE_CURSOR);
+    for (int i = 0; i < 25; i++) {
+      for (int shift = 0; shift < colors.length; shift++) {
+        System.out.print(RESET_CURSOR);
+        drawBlock(shift);
+        sleep(25);
+      }
+    }
+    System.out.print(SHOW_CURSOR);
+    System.out.print(RESET);
+    System.out.print(CLEAR_SCREEN);
+
+  }
+  
 }
