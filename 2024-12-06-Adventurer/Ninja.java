@@ -15,7 +15,7 @@ public class Ninja extends Adventurer {
   }
 
   public String getSpecialName() {
-    return "stealth"
+    return "stealth";
   }
 
   public int getSpecial() {
@@ -32,34 +32,43 @@ public class Ninja extends Adventurer {
 
   public String attack(Adventurer other) {
     other.applyDamage(10);
-    return other.getName() + " lost 10 HP!";
+    return getName() + " attacks " + other.getName() + ". " + other.getName() + " lost 10 HP!";
   }
 
   public String support(Adventurer other) {
+    int original = other.getHP();
+    int max = other.getmaxHP();
 
+    if (original+10 > max) {
+      other.setHP(max);
+      return getName() + " buffed " + other.getName() + " by " + (max-original) + " HP. Max HP of " + max + " reached!";
+    }
+    other.setHP(original+10);
+    return getName() + " buffed " + other.getName() + " by 10 HP to " + (original+10) + " HP.";
   }
 
   public String support() {
-    if (getHP()+10 > getmaxHP()) {
-      return "HP buffed by " + (getmaxHP() - getHP()) + "to. Max health reached!"
+    int original = getHP();
+    int max = getmaxHP();
+
+    if (original + 10 > max) {
+      setHP(max);
+      return getName() + " buffed by " + (original - max) + " HP. Max health reached!";
     }
-    setHP(getHP() + 10);
-    return
+    setHP(original + 10);
+    return getName() + " buffed by 10 HP to " + (original + 10) + " HP.";
   }
 
   public String specialAttack(Adventurer other) {
     int currentSpecial = getSpecial();
+
     if (currentSpecial >= 10) {
       setSpecial(currentSpecial - 10);
+      other.applyDamage(50);
+      return getName() + " used 10 " + getSpecialName() + " pts to special attack " + other.getName() + ". " + other.getName() + " lost 50 HP!";
+    }
 
-    }
-    else {
-      System.out.println("not ")
-    }
+    return "Not enough " + getSpecialName() + " points";
   }
-
-
-
-
 
 }
