@@ -48,13 +48,13 @@ public class Game {
           }
         }
 
-        if (n.getHP() == 0) {
+        if (n.getHP() <= 0) {
           System.out.println(c.getName() + " won!");
           input.close();
           return;
         }
-        if (c.getHP() == 0) {
-          System.out.println(n.getName() + "won!");
+        if (c.getHP() <= 0) {
+          System.out.println(n.getName() + " won!");
           input.close();
           return;
         }
