@@ -12,6 +12,7 @@ public class Ninja extends Adventurer {
   public Ninja(String name, int hp, int stealth) {
     super(name, hp);
     this.stealth = stealth;
+    this.stealthMax = stealth;
   }
 
   public String getSpecialName() {
