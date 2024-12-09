@@ -12,31 +12,53 @@ public class Game {
       Scanner input = new Scanner(System.in);
       System.out.println("Type: (a)ttack / (sp)ecial / (su)pport / (q)uit");
       String action = input.nextLine();
+      
+      boolean correctInput = true;
 
       if (action.equals("a")) {
-        c.attack(n);
+        System.out.println(c.attack(n));
       }
       else if (action.equals("sp")) {
-        c.specialAttack(n);
+        System.out.println(c.specialAttack(n));
       }
       else if (action.equals("su")) {
-        c.support();
+        System.out.println(c.support());
       }
       else if (action.equals("q")) {
         System.out.println("Thanks for playing!");
+        input.close();
         return;
       }
       else {
+        correctInput = false;
         System.out.println("Invaid input. Try again");
       }
 
-      if (n.getHP() > 0) {
-        int choice = (int) (Math.random() * 4);
-        if (choice == 0) {
-          n.attack()
+      if (correctInput) {
+        if (n.getHP() > 0 && correctInput) {
+          int choice = (int) (Math.random() * 3);
+          if (choice == 0) {
+            System.out.println(n.attack(c));
+          }
+          else if (choice == 1) {
+            System.out.println(n.specialAttack(c));
+          }
+          else {
+            System.out.println(n.support());
+          }
+        }
+
+        if (n.getHP() == 0) {
+          System.out.println(c.getName() + " won!");
+          input.close();
+          return;
+        }
+        if (c.getHP() == 0) {
+          System.out.println(n.getName() + "won!");
+          input.close();
+          return;
         }
       }
-
     }
   }
 }

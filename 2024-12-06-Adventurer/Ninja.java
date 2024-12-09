@@ -54,7 +54,7 @@ public class Ninja extends Adventurer {
 
     if (original + 10 > max) {
       setHP(max);
-      return getName() + " buffed by " + (original - max) + " HP. Max health reached!";
+      return getName() + " buffed by " + (max - original) + " HP. Max health reached!";
     }
     setHP(original + 10);
     return getName() + " buffed by 10 HP to " + (original + 10) + " HP.";
